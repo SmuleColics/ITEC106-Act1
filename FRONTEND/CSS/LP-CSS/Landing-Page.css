@@ -1,0 +1,35 @@
+body {
+  padding-top: 68px;
+}
+
+.logo {
+  width: 42px !important;
+}
+
+.sm-logo {
+  width: 32px !important;
+}
+
+.hero-section video {
+  object-fit: cover;
+}
+
+.new-pool, .facilities-img {
+  max-height: 320px;
+}
+
+.carousel-img {
+  width: 670px;
+  height: 380px;
+  object-fit: cover;
+}
+
+#carouselExampleFade {
+  max-width: 670px;
+}
+
+
+
+
+
+

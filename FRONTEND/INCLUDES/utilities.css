@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&family=Nunito+Sans:wght@300;400;600;700&display=swap');
+
+:root {
+  --color-main-dark: #1d2930;
+  --color-main: #DBF2F8;
+  --color-sec: #F5E8D6;
+  --color-light: #fcfaf8;
+  --color-grayish: #caccce;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Merriweather', serif;
+  /* or 'Libre Caslon Text', serif */
+}
+
+body, p, a, li {
+  font-family: 'Nunito Sans', sans-serif;
+  /* or 'Karla', sans-serif */
+}
+
+.bg-main {
+  background-color: var(--color-main);
+}
+
+.bg-sec {
+  background-color: var(--color-sec);
+}
+
+.bg-semi-white {
+  background-color: var(--color-light);
+}
+
+.fs-14 {
+  font-size: 14px;
+}
+
+.sm-text {
+  font-size: 12px;
+}
+
+.bg-main-dark {
+  background-color: var(--color-main-dark);
+}
+
+.text-gray {
+  color: var(--color-grayish);
+}
+
+img {
+  object-fit: cover;
+}
