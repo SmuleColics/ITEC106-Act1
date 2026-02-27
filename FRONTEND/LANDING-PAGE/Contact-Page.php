@@ -43,25 +43,31 @@
         <div class="col-lg-6 d-flex justify-content-center align-items-center gap-4">
           <div class="w-100 mx-5">
 
-            <form class="needs-validation" novalidate>
+            <form method="POST" action="../../BACKEND/LANDING-PAGE/contact.php" class="needs-validation" novalidate>
               <h5 class="fs-3 fw-bold mb-4">Send Us a Message</h5>
+
+              <?php
+              //Display of error and success message
+              require "../../BACKEND/INCLUDES/session_msg.php";
+              ?>
+
               <div class="mb-3">
                 <label for="name" class="form-label mb-0">Name</label>
-                <input type="text" class="form-control" id="name" placeholder="Your Name" required>
+                <input type="text" class="form-control" id="name" name="fullname" placeholder="Your Name" required>
                 <div class="invalid-feedback">
                   Please provide your name.
                 </div>
               </div>
               <div class="mb-3">
                 <label for="email" class="form-label mb-0">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="you@gmail.com" required>
+                <input type="email" class="form-control" id="email" name="email" placeholder="you@gmail.com" required>
                 <div class="invalid-feedback">
                   Please provide a valid email address.
                 </div>
               </div>
               <div class="mb-3">
                 <label for="message" class="form-label mb-0">Message</label>
-                <textarea class="form-control" name="message" id="message" rows="4" placeholder="How can we help?"
+                <textarea class="form-control" id="message" name="message" rows="4" placeholder="How can we help?"
                   required></textarea>
                 <div class="invalid-feedback">
                   Please enter your message.

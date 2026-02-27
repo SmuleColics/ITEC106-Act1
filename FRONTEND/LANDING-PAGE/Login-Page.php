@@ -38,17 +38,22 @@
               <p class="card-text text-secondary">Log in to book your private paradise</p>
             </div>
 
-            <form class="needs-validation" novalidate>
+            <?php
+            //Display of error and success message
+            require "../../BACKEND/INCLUDES/session_msg.php";
+            ?>
+
+            <form class="needs-validation" method="POST" action="../../BACKEND/LANDING-PAGE/login.php" novalidate>
               <div class="mb-3">
-                <label for="email" class="form-label mb-0">Username/Email</label>
-                <input type="email" class="form-control bg-semi-white" id="email" placeholder="you@gmail.com" required>
+                <label for="email" class="form-label mb-0">Email</label>
+                <input type="email" class="form-control bg-semi-white" id="email" name="email" placeholder="you@gmail.com" required>
                 <div class="invalid-feedback">
                   Please provide a valid email address.
                 </div>
               </div>
               <div class="mb-4">
                 <label for="password" class="form-label mb-0">Password</label>
-                <input type="password" class="form-control bg-semi-white" id="password" placeholder="********" required>
+                <input type="password" class="form-control bg-semi-white" id="password" name="password" placeholder="********" required>
                 <div class="invalid-feedback">
                   Please provide a valid password.
                 </div>
@@ -70,7 +75,7 @@
                 </button>
               </div>
               <p class="text-secondary text-center mb-0 fs-14">
-                Don't have an account? 
+                Don't have an account?
                 <i class="fa-solid fa-user-plus text-primary"></i>
                 <a href="Signup-Page.php" class="text-decoration-none">Register</a>
               </p>

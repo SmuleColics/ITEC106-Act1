@@ -38,11 +38,17 @@
               <p class="card-text text-secondary">Join us and start booking your dream getaway</p>
             </div>
 
-            <form class="needs-validation" novalidate>
+            <?php
+            //Display of error and success message
+            require "../../BACKEND/INCLUDES/session_msg.php";
+            ?>
+
+            <!-- include enctype logic to allow the upload of files -->
+            <form class="needs-validation" method="POST" action="../../BACKEND/LANDING-PAGE/signup.php" enctype="multipart/form-data" novalidate>
 
               <div class="mb-3">
                 <label for="name" class="form-label mb-0">Full Name</label>
-                <input type="text" class="form-control bg-semi-white" id="name" placeholder="Juan Dela Cruz" required>
+                <input type="text" class="form-control bg-semi-white" id="name" name="fullname" placeholder="Juan Dela Cruz" required>
                 <div class="invalid-feedback">
                   Please provide your full name.
                 </div>
@@ -50,7 +56,7 @@
 
               <div class="mb-3">
                 <label for="email" class="form-label mb-0">Email Address</label>
-                <input type="email" class="form-control bg-semi-white" id="email" placeholder="you@gmail.com" required>
+                <input type="email" class="form-control bg-semi-white" id="email" name="email" placeholder="you@gmail.com" required>
                 <div class="invalid-feedback">
                   Please provide a valid email address.
                 </div>
@@ -58,7 +64,7 @@
 
               <div class="mb-3">
                 <label for="password" class="form-label mb-0">Password</label>
-                <input type="password" class="form-control bg-semi-white" id="password" placeholder="********" minlength="8" required>
+                <input type="password" class="form-control bg-semi-white" id="password" name="password" placeholder="********" minlength="8" required>
                 <div class="invalid-feedback">
                   Password must be at least 8 characters long.
                 </div>
@@ -66,7 +72,7 @@
 
               <div class="mb-3">
                 <label for="confirmPassword" class="form-label mb-0">Confirm Password</label>
-                <input type="password" class="form-control bg-semi-white" id="confirmPassword" placeholder="********" minlength="8" required>
+                <input type="password" class="form-control bg-semi-white" id="confirmPassword" name="confirmPassword" placeholder="********" minlength="8" required>
                 <div class="invalid-feedback">
                   Please confirm your password.
                 </div>
@@ -100,9 +106,10 @@
                   </div>
                 </div>
               </div>
+
               <div class="mb-3">
                 <label for="profilePicture" class="form-label mb-0">Profile Picture (Optional)</label>
-                <input class="form-control bg-semi-white" type="file" id="profilePicture" accept="image/*">
+                <input class="form-control bg-semi-white" type="file" id="profilePicture" name="profilePic" accept="image/*">
                 <div class="form-text">Upload a profile picture (JPG, PNG, max 5MB)</div>
               </div>
 
@@ -119,7 +126,7 @@
               </div>
 
               <div class="d-grid mb-3">
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" name="submit" class="btn btn-primary">
                   <i class="fa-solid fa-user-plus me-2"></i>Create Account
                 </button>
               </div>
