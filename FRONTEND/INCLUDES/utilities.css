@@ -6,8 +6,8 @@
   --color-sec: #F5E8D6;
   --color-light: #fcfaf8;
   --color-grayish: #caccce;
+  --color-body-db: #253540;
 }
-
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Merriweather', serif;
@@ -21,6 +21,10 @@ body, p, a, li {
 
 .bg-main {
   background-color: var(--color-main);
+}
+
+.bg-db {
+  background-color: var(--color-light) !important;
 }
 
 .bg-sec {

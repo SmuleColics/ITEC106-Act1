@@ -1,0 +1,65 @@
+header, aside {
+  z-index: 100;
+}
+
+aside {
+  margin-top: 70px !important;
+  width: 280px !important;
+}
+
+/* so it doesn't get block by the header and sidebar */
+main {
+  margin-top: 70px;
+  margin-left: 280px;
+  padding: 0;
+}
+
+.search-container {
+  max-width: 280px;
+}
+
+.border-end, .border-bottom, .border-top {
+  border-color: #2e3f4d !important; /* slightly lighter than the bg */
+}
+
+.logo {
+  width: 38px !important;
+}
+
+.sidebar-logo {
+  width: 32px;
+  height: 32px;
+}
+
+.nav-link.active {
+  background-color: #0d6efd;
+  color: #fff;
+}
+
+.profile-avatar {
+  width: 112px; 
+  height: 112px;
+  z-index: 1;
+}
+
+/* Hide the text in the sidebar on smaller screen, only showing the icon */
+@media (max-width: 768px) {
+  aside {
+    width: 70px !important; /* icon-only sidebar */
+  }
+
+  main {
+    margin-left: 66px;
+  }
+
+  aside span {
+    display: none; /* hide text labels */
+  }
+}
+
+@media (max-width: 480px) {
+  aside {
+    width: 0 !important; /* fully hidden on mobile */
+    overflow: hidden;
+  }
+}
