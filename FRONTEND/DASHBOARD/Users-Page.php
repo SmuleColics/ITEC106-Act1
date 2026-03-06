@@ -22,25 +22,34 @@
 
 <body class="bg-db">
   <!-- ========== HEADER + SIDEBAR ========== -->
-  <?php include('../INCLUDES/db-header-sidebar.php'); ?>
+  <?php
+  include('../INCLUDES/db-header-sidebar.php');
+  $sql = "SELECT * FROM tbl_users";
+
+  $result = $conn->query($sql);
+  ?>
+  <!-- CRUD MODALS -->
   <?php include "Modal/users-modal.php" ?>
+  <!-- Display error and success message -->
+  <?php include "../../BACKEND/INCLUDES/session_msg.php"; ?>
   <!-- ========== MAIN CONTENT ========== -->
   <main class="p-4">
 
     <div class="container-xxl p-0">
       <!-- Page heading + Add button -->
-      <div class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center justify-content-between gap-3 mb-4">
+      <div
+        class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center justify-content-between gap-3 mb-4">
         <div>
           <h2 class="mb-1">Users Management</h2>
           <p class="mb-0 text-secondary fs-14">Manage all user records from here.</p>
         </div>
         <!-- Triggers Create Modal -->
-        <button class="btn btn-primary d-flex align-items-center gap-2"
-          data-bs-toggle="modal" data-bs-target="#createModal">
+        <button class="btn btn-primary d-flex align-items-center gap-2" data-bs-toggle="modal"
+          data-bs-target="#createModal">
           <i class="bi bi-plus-lg"></i> Add New User
         </button>
       </div>
-  
+
       <!-- Search input -->
       <div class="mb-3 search-container">
         <div class="input-group">
@@ -50,7 +59,7 @@
           <input type="text" class="form-control border-start-0 ps-0" placeholder="Search users...">
         </div>
       </div>
-  
+
       <!-- ========== USERS TABLE ========== -->
       <div class="bg-white rounded-3 border overflow-hidden">
         <table class="table table-hover mb-0">
@@ -65,106 +74,48 @@
             </tr>
           </thead>
           <tbody>
-  
-            <!-- Row 1 -->
-            <tr>
-              <td class="fw-medium fs-14">1</td>
-              <td class="fw-medium fs-14">Juan Dela Cruz</td>
-              <td class="d-none d-sm-table-cell text-secondary fs-14">juan@email.com</td>
-              <td class="d-none d-md-table-cell fs-14 text-secondary">Admin</td>
-              <td>
-                <span class="badge bg-success rounded-pill px-3 py-1 fs-14">Active</span>
-              </td>
-              <td class="text-end">
-                <button class="btn btn-sm btn-light me-1" data-bs-toggle="modal" data-bs-target="#editModal" title="Edit">
-                  <i class="bi bi-pencil"></i>
-                </button>
-                <button class="btn btn-sm btn-light text-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" title="Delete">
-                  <i class="bi bi-trash"></i>
-                </button>
-              </td>
-            </tr>
-  
-            <!-- Row 2 -->
-            <tr>
-              <td class="fw-medium fs-14">2</td>
-              <td class="fw-medium fs-14">Maria Santos</td>
-              <td class="d-none d-sm-table-cell text-secondary fs-14">maria@email.com</td>
-              <td class="d-none d-md-table-cell fs-14 text-secondary">Staff</td>
-              <td>
-                <span class="badge bg-success rounded-pill px-3 py-1 fs-14">Active</span>
-              </td>
-              <td class="text-end">
-                <button class="btn btn-sm btn-light me-1" data-bs-toggle="modal" data-bs-target="#editModal" title="Edit">
-                  <i class="bi bi-pencil"></i>
-                </button>
-                <button class="btn btn-sm btn-light text-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" title="Delete">
-                  <i class="bi bi-trash"></i>
-                </button>
-              </td>
-            </tr>
-  
-            <!-- Row 3 -->
-            <tr>
-              <td class="fw-medium fs-14">3</td>
-              <td class="fw-medium fs-14">Pedro Reyes</td>
-              <td class="d-none d-sm-table-cell text-secondary fs-14">pedro@email.com</td>
-              <td class="d-none d-md-table-cell fs-14 text-secondary">Guest</td>
-              <td>
-                <span class="badge bg-danger rounded-pill px-3 py-1 fs-14">Inactive</span>
-              </td>
-              <td class="text-end">
-                <button class="btn btn-sm btn-light me-1" data-bs-toggle="modal" data-bs-target="#editModal" title="Edit">
-                  <i class="bi bi-pencil"></i>
-                </button>
-                <button class="btn btn-sm btn-light text-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" title="Delete">
-                  <i class="bi bi-trash"></i>
-                </button>
-              </td>
-            </tr>
-  
-            <!-- Row 4 -->
-            <tr>
-              <td class="fw-medium fs-14">4</td>
-              <td class="fw-medium fs-14">Ana Garcia</td>
-              <td class="d-none d-sm-table-cell text-secondary fs-14">ana@email.com</td>
-              <td class="d-none d-md-table-cell fs-14 text-secondary">Staff</td>
-              <td>
-                <span class="badge bg-success rounded-pill px-3 py-1 fs-14">Active</span>
-              </td>
-              <td class="text-end">
-                <button class="btn btn-sm btn-light me-1" data-bs-toggle="modal" data-bs-target="#editModal" title="Edit">
-                  <i class="bi bi-pencil"></i>
-                </button>
-                <button class="btn btn-sm btn-light text-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" title="Delete">
-                  <i class="bi bi-trash"></i>
-                </button>
-              </td>
-            </tr>
-  
-            <!-- Row 5 -->
-            <tr>
-              <td class="fw-medium fs-14">5</td>
-              <td class="fw-medium fs-14">Carlos Mendoza</td>
-              <td class="d-none d-sm-table-cell text-secondary fs-14">carlos@email.com</td>
-              <td class="d-none d-md-table-cell fs-14 text-secondary">Guest</td>
-              <td>
-                <span class="badge bg-success rounded-pill px-3 py-1 fs-14">Active</span>
-              </td>
-              <td class="text-end">
-                <button class="btn btn-sm btn-light me-1" data-bs-toggle="modal" data-bs-target="#editModal" title="Edit">
-                  <i class="bi bi-pencil"></i>
-                </button>
-                <button class="btn btn-sm btn-light text-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" title="Delete">
-                  <i class="bi bi-trash"></i>
-                </button>
-              </td>
-            </tr>
-  
+
+            <?php while ($row = $result->fetch_assoc()) { ?>
+              <!-- Row 1 -->
+              <tr>
+                <!-- Display records -->
+                <td class="fw-medium fs-14"><?php echo $row['user_id'] ?></td>
+                <td class="fw-medium fs-14"><?php echo $row['fullname'] ?></td>
+                <td class="d-none d-sm-table-cell text-secondary fs-14"><?php echo $row['email'] ?></td>
+                <td class="d-none d-md-table-cell fs-14 text-secondary"><?php echo $row['role'] ?></td>
+
+                <?php if ($row['status'] == "Active"): ?>
+                <td>
+                  <span class="badge bg-success rounded-pill px-3 py-1 fs-14"><?php echo $row['status'] ?></span>
+                </td>
+                <?php endif; ?>
+
+                <?php if ($row['status'] == "Inactive"): ?>
+                <td>
+                  <span class="badge bg-danger rounded-pill px-3 py-1 fs-14"><?php echo $row['status'] ?></span>
+                </td>
+                <?php endif; ?>
+
+
+                <td class="text-end">
+                  <button class="btn btn-sm btn-light me-1" data-bs-toggle="modal" data-bs-target="#editModal"
+                    title="Edit">
+                    <i class="bi bi-pencil"></i>
+                  </button>
+                  <button class="btn btn-sm btn-light text-danger" data-bs-toggle="modal" data-bs-target="#deleteModal"
+                    title="Delete">
+                    <i class="bi bi-trash"></i>
+                  </button>
+                </td>
+              </tr>
+
+            <?php } ?>
+
+
           </tbody>
         </table>
       </div>
-  
+
     </div>
   </main>
 

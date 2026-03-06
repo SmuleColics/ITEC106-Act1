@@ -1,5 +1,6 @@
 <?php
 session_start();
+require "../../BACKEND/INCLUDES/db-con.php";
 
 $fullname = $_SESSION['user'];
 
@@ -9,10 +10,10 @@ if (!isset($fullname)) {
 
 ?>
 
-<!-- I modified this bootstrap template of sidebar->
-<!-- Sidebar Header -->
+<!-- I modified this bootstrap template of sidebar -->
+<!-- Sidebar Header  -->
 <header class="position-fixed w-100 bg-main-dark top-0 left-0 right-0">
-  <div class="d-flex align-items-center gap-2 px-0 py-3  border-bottom">
+  <div class="d-flex align-items-center gap-2 px-0 ms-3 py-3  border-bottom">
     <a class="navbar-brand d-flex align-items-center text-gray" href="#">
       <img class="logo me-2" src="../IMAGES/LP-IMAGES/Love-Joy-Logo.svg" alt="">
       <span class="fw-bold fs-5">Love Joy's Admin</span>

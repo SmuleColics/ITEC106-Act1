@@ -1,3 +1,7 @@
+
+<?php 
+session_start();
+?>
 <!-- ========== START OF HEADER ========== -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-main-dark fixed-top">
   <div class="container-fluid">

@@ -9,7 +9,7 @@ aside {
 
 /* so it doesn't get block by the header and sidebar */
 main {
-  margin-top: 70px;
+  margin-top: 50px;
   margin-left: 280px;
   padding: 0;
 }

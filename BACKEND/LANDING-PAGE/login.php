@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 require "../INCLUDES/db-con.php";
 
@@ -18,9 +18,22 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     // verify the input password from hashed password in the db
     if (password_verify($password, $user['password'])) {
-      $_SESSION['user'] = $user['fullname']; 
-      header('Location: ../../FRONTEND/DASHBOARD/Dashboard-Page.php');
-      exit();
+       // Check if account is Active
+      if ($user['status'] != 'Active') {
+        $_SESSION['errorMsg'] = "Your account is inactive.";
+        header('Location: ../../FRONTEND/LANDING-PAGE/Login-Page.php');
+        exit();
+      }
+
+      $_SESSION['user'] = $user['fullname'];
+
+      if ($user['role'] == "Admin") {
+        header('Location: ../../FRONTEND/DASHBOARD/Dashboard-Page.php');
+        exit();
+      } else {
+        header('Location: ../../FRONTEND/CLIENT-SIDE/Client-Portal.php');
+        exit();
+      }
     } else {
       $_SESSION['errorMsg'] = "Invalid Password";
     }
@@ -32,7 +45,3 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   header('Location: ../../FRONTEND/LANDING-PAGE/Login-Page.php');
   exit();
 }
-
-
-
-?>

@@ -4,7 +4,7 @@ require "../INCLUDES/db-con.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   // get all the information first 
-  $fullname = $_POST["fullname"];
+  $fullname = ucfirst($_POST["fullname"]);
   $email = $_POST["email"];
   $password = $_POST["password"];
   $confirmPassword = $_POST["confirmPassword"];
