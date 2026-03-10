@@ -24,7 +24,6 @@
 <body class="overflow-x-hidden">
 
   <main class="container-xxl p-0 bg-semi-white">
-
     <!-- ========== HEADER ========== -->
     <?php include('../INCLUDES/header.php'); ?>
 
@@ -45,8 +44,8 @@
           weekend getaway.
         </p>
         <div class="mt-4">
-          <button class="btn btn-primary me-2 px-3 py-1 px-md-4 py-md-2 fs-6 fs-md-5">Book Now</button>
-          <button class="btn btn-outline-light px-3 py-1 px-md-4 py-md-2 fs-6 fs-md-5">View Facilities</button>
+          <a href="Login-Page.php" type="button" class="btn btn-primary me-2 px-3 py-1 px-md-4 py-md-2 fs-6 fs-md-5">Book Now</a>
+          <a href="Facilities-Page.php" type="button" class="btn btn-outline-light px-3 py-1 px-md-4 py-md-2 fs-6 fs-md-5">View Facilities</a>
         </div>
       </div>
     </section>
@@ -86,8 +85,8 @@
               families,
               friends, or couples seeking a peaceful weekend getaway.
             </p>
-            <button type="button" class="btn btn-outline-primary border-secondary-subtle">Explore Our
-              Facilities</button>
+            <a href="Facilities-Page.php" type="button" class="btn btn-outline-primary border-secondary-subtle">Explore Our
+              Facilities</a>
           </div>
         </div>
         <div class="col-lg-6">
@@ -99,7 +98,7 @@
       </div>
     </section>
     <!-- ========== END OF INTRODUCTION SECTION ========== -->
-
+    
     <!-- ========== START OF PRICING SECTION ========== -->
     <section class="bg-main py-4">
       <div class="py-5 mx-5">
@@ -165,7 +164,7 @@
         </div>
 
         <div class="d-flex justify-content-center mt-4">
-          <button class="btn btn-primary btn-large py-2 px-4">Reserve Your Date</button>
+          <a href="Login-Page.php" type="button" class="btn btn-primary btn-large py-2 px-4">Reserve Your Date</a>
         </div>
 
       </div>
@@ -255,7 +254,7 @@
           <h2 class="fs-2 mb-0 fw-bold mb-2 text-primary">Ready for Your Private Paradise?</h2>
           <p class="col-md-5 mx-auto text-secondary">Secure your date today with just 20% down payment. Your exclusive
             getaway awaits.</p>
-          <button class="btn btn-primary px-4">Book Now</button>
+          <a href="Login-Page.php" type="button" class="btn btn-primary px-4">Book Now</a>
         </div>
       </div>
     </section>

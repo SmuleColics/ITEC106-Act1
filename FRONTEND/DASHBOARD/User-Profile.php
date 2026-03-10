@@ -21,7 +21,6 @@
 </head>
 
 <body class="bg-db">
-
   <!-- ========== HEADER + SIDEBAR ========== -->
   <?php include('../INCLUDES/db-header-sidebar.php'); ?>
 
