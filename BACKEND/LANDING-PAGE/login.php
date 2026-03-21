@@ -25,7 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         exit();
       }
 
-      $_SESSION['user'] = $user['fullname'];
+      $_SESSION['fullname'] = $user['fullname'];
+      $_SESSION['user_id'] = $user['user_id'];
 
       if ($user['role'] == "Admin") {
         header('Location: ../../FRONTEND/DASHBOARD/Dashboard-Page.php');

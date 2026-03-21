@@ -1,3 +1,25 @@
+<?php 
+// <!-- ========== HEADER + SIDEBAR ========== -->
+include('../INCLUDES/db-header-sidebar.php');
+require "../../BACKEND/INCLUDES/session_msg.php";
+
+$fullname = $_SESSION['fullname'];
+$user_id = $_SESSION['user_id'];
+
+// Retrieve data sa database
+$sql = "SELECT * FROM tbl_users WHERE user_id = '$user_id'";
+$result = $conn->query($sql);
+$user = $result->fetch_assoc();
+
+// Set of profile pic - use default if empty
+if (!empty($user['profile_pic'])) {
+  $profile_src =  "../../BACKEND/UPLOADS/" . $user['profile_pic'];
+} else {
+  $profile_src = "https://github.com/mdo.png";
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,9 +43,6 @@
 </head>
 
 <body class="bg-db">
-  <!-- ========== HEADER + SIDEBAR ========== -->
-  <?php include('../INCLUDES/db-header-sidebar.php'); ?>
-
   <!-- ========== MAIN CONTENT ========== -->
   <main class="p-4">
 
@@ -37,7 +56,7 @@
             <p class="mb-0 text-muted fs-14">Manage your personal information.</p>
           </div>
 
-          <form class="needs-validation" novalidate method="POST" action="">
+          <form class="needs-validation" novalidate method="POST" action="../../BACKEND/DASHBOARD/be-user-profile.php" enctype="multipart/form-data">
 
             <!-- ========== PROFILE PICTURE CARD ========== -->
             <div class="bg-white rounded-3 border p-4 mb-4">
@@ -47,15 +66,16 @@
 
                 <!-- Avatar -->
                 <div class="profile-img">
-                  <img src="https://github.com/mdo.png" alt="User" class="rounded-circle" width="120" height="120">
+                  <img src="<?= $profile_src ?>" alt="User" class="rounded-circle" width="120" height="120">
                 </div>
 
                 <!-- File Upload -->
-                <div>
-                  <label for="profileUpload" class="btn btn-secondary btn-sm mb-0">
-                    <i class="bi bi-camera me-1"></i> Change Photo
-                  </label>
-                  <input type="file" id="profileUpload" name="profile_picture" accept="image/*" class="d-none">
+                <div class="d-flex align-items-center flex-column justify-content-center">
+                  <input type="file" id="profileUpload" name="profile_pic" accept="image/*" class="form-control form-control-sm mb-2">
+
+                  <button type="submit" name="upload_pic" class="btn btn-primary btn-sm">
+                    <i class="bi bi-upload mx-auto"></i> Upload Photo
+                  </button>
                 </div>
 
               </div>
@@ -65,54 +85,48 @@
             <div class="bg-white rounded-3 border p-4">
               <h6 class="fw-semibold mb-3">User Information</h6>
 
-              <!-- Name + Email row -->
+              <!-- Name & Email row -->
               <div class="row g-3 mb-3">
 
                 <div class="col-12 col-sm-6">
                   <label class="form-label fw-semibold fs-14">Name</label>
-                  <input type="text" class="form-control" name="name" value="Juan Dela Cruz" required>
+                  <input type="text" class="form-control" name="fullname" value="<?= htmlspecialchars($user['fullname']) ?>" required>
                   <div class="invalid-feedback">Please provide your name.</div>
                 </div>
 
                 <div class="col-12 col-sm-6">
                   <label class="form-label fw-semibold fs-14">Email</label>
-                  <input type="email" class="form-control" name="email" value="juan@email.com" required>
+                  <input type="email" class="form-control" name="email" value="<?= htmlspecialchars($user['email']) ?>" required>
                   <div class="invalid-feedback">Please provide a valid email address.</div>
                 </div>
 
-              </div>
-
-              <!-- Phone + Address row -->
-              <div class="row g-3 mb-3">
-
+                <hr class="mt-4">
+                
+                <h6 class="fw-semibold mt-0">Change Password</h6>
+                <!-- Current & New Password -->
+                <div class="col-12">
+                  <label class="form-label fw-semibold fs-14">Current Password</label>
+                  <input type="password" class="form-control" name="current_password"
+                    placeholder="••••••••">
+                </div>
                 <div class="col-12 col-sm-6">
-                  <label class="form-label fw-semibold fs-14">Phone Number</label>
-                  <input type="tel" class="form-control" name="phone" value="+63 912 345 6789" required>
-                  <div class="invalid-feedback">Please provide a phone number.</div>
+                  <label class="form-label fw-semibold fs-14">New Password</label>
+                  <input type="password" class="form-control" name="new_password"
+                    placeholder="••••••••">
+                </div>
+                <div class="col-12 col-sm-6">
+                  <label class="form-label fw-semibold fs-14">Confirm Password</label>
+                  <input type="password" class="form-control" name="confirm_password"
+                    placeholder="••••••••">
                 </div>
 
-                <div class="col-12 col-sm-6">
-                  <label class="form-label fw-semibold fs-14">Address</label>
-                  <input type="text" class="form-control" name="address" value="123 Beach Road, Boracay, Philippines" required>
-                  <div class="invalid-feedback">Please provide an address.</div>
+                <!-- Save button -->
+                <div class="d-flex justify-content-end gap-2">
+                  <button type="reset" class="btn btn-outline-secondary">Cancel</button>
+                  <button type="submit" name="save_changes" class="btn btn-primary">Save Changes</button>
                 </div>
 
               </div>
-
-              <!-- Short Bio -->
-              <div class="mb-4">
-                <label class="form-label fw-semibold fs-14">Short Bio</label>
-                <textarea class="form-control" name="bio" rows="4" placeholder="Tell us about yourself..." required>Passionate traveler and resort enthusiast. Love spending time by the ocean and exploring new destinations.</textarea>
-                <div class="invalid-feedback">Please enter a short bio.</div>
-              </div>
-
-              <!-- Save button -->
-              <div class="d-flex justify-content-end gap-2">
-                <button type="reset" class="btn btn-outline-secondary">Cancel</button>
-                <button type="submit" class="btn btn-primary">Save Changes</button>
-              </div>
-
-            </div>
 
           </form>
 

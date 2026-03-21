@@ -2,7 +2,8 @@
 session_start();
 require "../../BACKEND/INCLUDES/db-con.php";
 
-$fullname = $_SESSION['user'];
+$fullname = $_SESSION['fullname'];
+$user_id = $_SESSION['user_id'];
 
 if (!isset($fullname)) {
   header("Location: ../LANDING-PAGE/Login-Page.php");
